@@ -33,6 +33,7 @@ func	damage_taken(amount):
 	sfx_hurt.play()
 	hp -= amount
 	if hp <= 0:
+		sfx_dead.play()
 		killed.emit(scoring)
 		die()
 	

@@ -36,6 +36,7 @@ stream = ExtResource("3_63qd5")
 
 [node name="enemydead" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_k4cjm")
+volume_db = -2.137
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
