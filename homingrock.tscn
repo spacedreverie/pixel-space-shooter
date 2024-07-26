@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://ia1s4jwghxc1"]
+
+[ext_resource type="Script" path="res://homingrock.gd" id="1_wl0a1"]
+[ext_resource type="Texture2D" uid="uid://cvmofk7t33wnn" path="res://assets/ori_res/evilbox.png" id="2_6bqo2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_krp6m"]
+size = Vector2(100, 64)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wig68"]
+radius = 339.094
+
+[node name="homingrock" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 5
+floor_stop_on_slope = false
+safe_margin = 0.001
+script = ExtResource("1_wl0a1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_krp6m")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.572549, 0.0941176, 0.294118, 1)
+light_mask = 2
+position = Vector2(0, -1)
+scale = Vector2(1.49219, 1.38281)
+texture = ExtResource("2_6bqo2")
+
+[node name="findplayer" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="findplayer"]
+shape = SubResource("CircleShape2D_wig68")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0, 28)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 15.0
+autostart = true
+
+[connection signal="body_entered" from="findplayer" to="." method="_on_findplayer_body_entered"]
+[connection signal="body_exited" from="findplayer" to="." method="_on_findplayer_body_exited"]
+[connection signal="body_shape_entered" from="findplayer" to="." method="_on_findplayer_body_shape_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

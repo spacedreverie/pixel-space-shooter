@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://l054il1ixkvs"]
+
+[ext_resource type="Script" path="res://script/Gunner.gd" id="1_e5qc0"]
+[ext_resource type="Texture2D" uid="uid://dv3c2ai8i270s" path="res://assets/textures/spaceShips_007.png" id="2_nwd7h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kloxe"]
+size = Vector2(26, 16)
+
+[node name="Gunner" type="Area2D"]
+position = Vector2(234, 162)
+script = ExtResource("1_e5qc0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_nwd7h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_kloxe")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(0, 15)
+
+[node name="Countdown" type="Timer" parent="."]

@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=3 uid="uid://ytlpk3dgf8tp"]
+
+[ext_resource type="Script" path="res://script/pause.gd" id="1_cj030"]
+[ext_resource type="FontFile" uid="uid://bmodnij6gpu7c" path="res://assets/fonts/8-BIT WONDER.TTF" id="1_n2iyw"]
+[ext_resource type="Theme" uid="uid://d4dwwjo37rcqh" path="res://assets/ori_res/blue.tres" id="2_r6rnv"]
+[ext_resource type="Theme" uid="uid://dg02q2eijobmj" path="res://restart_overlay.tres" id="2_rc60m"]
+
+[node name="Pause" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+script = ExtResource("1_cj030")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.53
+anchor_top = 0.63
+anchor_right = 0.53
+anchor_bottom = 0.63
+offset_left = -145.2
+offset_top = -228.8
+offset_right = 116.8
+offset_bottom = -25.8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme = ExtResource("2_r6rnv")
+alignment = 1
+
+[node name="Resume" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_rc60m")
+theme_override_fonts/font = ExtResource("1_n2iyw")
+theme_override_font_sizes/font_size = 24
+text = "RESUME"
+icon_alignment = 1
+
+[node name="quit" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_rc60m")
+theme_override_fonts/font = ExtResource("1_n2iyw")
+theme_override_font_sizes/font_size = 24
+text = "EXIT"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/quit" to="." method="_on_quit_pressed"]

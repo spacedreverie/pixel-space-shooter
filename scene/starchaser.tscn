@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bruuliwfuypy8"]
+
+[ext_resource type="PackedScene" uid="uid://cojlojfpcc4nw" path="res://scene/enemy.tscn" id="1_qu80v"]
+[ext_resource type="Texture2D" uid="uid://i76ko0lwwroo" path="res://assets/ori_res/starchaser.png" id="2_vn1u2"]
+
+[node name="starchaser" instance=ExtResource("1_qu80v")]
+scale = Vector2(1.7, 1.7)
+speed = 700
+hp = 8
+scoring = 600
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_vn1u2")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(-2, 2)

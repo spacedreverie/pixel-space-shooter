@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://cojlojfpcc4nw"]
+
+[ext_resource type="Script" path="res://script/enemy.gd" id="1_ifphc"]
+[ext_resource type="Texture2D" uid="uid://2d3cooav1eky" path="res://assets/ori_res/shine_bullet.png" id="2_4uf71"]
+[ext_resource type="AudioStream" uid="uid://bx4ovdmk1wwla" path="res://assets/sfx/hitHurt.wav" id="3_63qd5"]
+[ext_resource type="AudioStream" uid="uid://pyjsaav2g4an" path="res://assets/sfx/enemydead.wav" id="4_k4cjm"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4ntb4"]
+radius = 17.0
+height = 34.0
+
+[node name="enemy" type="Area2D"]
+position = Vector2(253, 586)
+collision_layer = 2
+collision_mask = 5
+priority = 1
+script = ExtResource("1_ifphc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.301961, 1, 1, 1)
+position = Vector2(-1.99999, 3.00002)
+scale = Vector2(0.442187, 0.442187)
+texture = ExtResource("2_4uf71")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 4)
+shape = SubResource("CapsuleShape2D_4ntb4")
+debug_color = Color(0, 0.588235, 0.686275, 0.419608)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-2, -24)
+scale = Vector2(0.6, 0.65)
+
+[node name="enemyhurt" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_63qd5")
+
+[node name="enemydead" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_k4cjm")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

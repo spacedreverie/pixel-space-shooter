@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwwgfuys3qnxs"]
+
+[ext_resource type="PackedScene" uid="uid://cojlojfpcc4nw" path="res://scene/enemy.tscn" id="1_whj2s"]
+[ext_resource type="Texture2D" uid="uid://h4xdds7kspbg" path="res://assets/ori_res/space-egg.png" id="2_tts65"]
+
+[node name="eggs" instance=ExtResource("1_whj2s")]
+position = Vector2(261, 384)
+scale = Vector2(1.5, 1.5)
+speed = 150
+hp = 3
+scoring = 160
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(-2.30001, 3.49999)
+scale = Vector2(0.364062, 0.351562)
+texture = ExtResource("2_tts65")

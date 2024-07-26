@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://b16kebbc85cjf"]
+
+[ext_resource type="Script" path="res://script/player.gd" id="1_tt38v"]
+[ext_resource type="Texture2D" uid="uid://p0qhdbuq8ykt" path="res://assets/ori_res/plane.png" id="2_swvj2"]
+[ext_resource type="AudioStream" uid="uid://beh6rpig5tc8t" path="res://assets/sfx/laserShoot.wav" id="3_0jcju"]
+[ext_resource type="AudioStream" uid="uid://0fyv83kaejb3" path="res://assets/sfx/playerdeath.wav" id="4_h6pe2"]
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+position = Vector2(270, 821)
+collision_mask = 2
+motion_mode = 1
+script = ExtResource("1_tt38v")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.952941, 0.823529, 0.262745, 1)
+position = Vector2(-8.99999, 5.00001)
+scale = Vector2(0.296875, 0.325781)
+texture = ExtResource("2_swvj2")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-9.00001, 7.00002)
+scale = Vector2(0.466667, 0.474107)
+polygon = PackedVector2Array(0, -37.9661, -32.1428, 25.3108, 0, 12.6554, 32.1428, 25.3108)
+
+[node name="Muzzle" type="Marker2D" parent="."]
+position = Vector2(-10, -19)
+
+[node name="shot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_0jcju")
+
+[node name="deadplayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_h6pe2")
